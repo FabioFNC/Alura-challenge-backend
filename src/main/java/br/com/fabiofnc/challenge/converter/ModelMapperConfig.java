@@ -1,4 +1,4 @@
-package br.com.fabiofnc.challenge.data.converter;
+package br.com.fabiofnc.challenge.converter;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

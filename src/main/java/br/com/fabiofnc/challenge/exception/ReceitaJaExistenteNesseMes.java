@@ -1,4 +1,4 @@
-package br.com.fabiofnc.challenge.data.exception;
+package br.com.fabiofnc.challenge.exception;
 
 public class ReceitaJaExistenteNesseMes extends RuntimeException {
 

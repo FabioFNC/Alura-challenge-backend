@@ -1,14 +1,17 @@
-package br.com.fabiofnc.service;
+package br.com.fabiofnc.challenge.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.fabiofnc.challenge.data.exception.ReceitaJaExistenteNesseMes;
 import br.com.fabiofnc.challenge.data.model.Receita;
-import br.com.fabiofnc.repository.ReceitaRepository;
+import br.com.fabiofnc.challenge.exception.ReceitaJaExistenteNesseMes;
+import br.com.fabiofnc.challenge.repository.ReceitaRepository;
 
 @Service
 public class ReceitaService {
@@ -22,6 +25,21 @@ public class ReceitaService {
 
     public List<Receita> findAll() {
         return repository.findAll();
+    }
+    
+    public Page<Receita> findAllByDescricao(String descricao, Pageable paginacao) {
+    	return repository.findAllByDescricao(descricao, paginacao);
+    }
+    
+    public Page<Receita> findAllByAnoAndMes(Integer ano, Integer mes, Pageable paginacao) {
+    	LocalDate dataDespesaEventual = LocalDate.of(ano, mes, 1);
+    	LocalDate dataInicio = dataDespesaEventual.withDayOfMonth(1);
+    	LocalDate dataFim = dataDespesaEventual.withDayOfMonth(dataDespesaEventual.lengthOfMonth());
+    	return repository.findAllByAnoAndMes(dataInicio, dataFim, paginacao);
+    }
+
+    public List<Receita> findByAnoAndMes(Integer ano, Integer mes) {
+    	return repository.findByAnoAndMes(ano, mes);
     }
 
     public void delete(Long id) {

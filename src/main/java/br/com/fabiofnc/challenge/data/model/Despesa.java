@@ -33,8 +33,20 @@ public class Despesa {
     private Long id;
     private String descricao;
     private BigDecimal valor;
-    private LocalDate data = LocalDate.now();
+    private LocalDate data;
     @Enumerated(EnumType.STRING)
     private TipoDespesa tipoDespesa;
+    @Enumerated(EnumType.STRING)
+    private CategoriaDespesa categoria;
+    
+    public void setCategoria(CategoriaDespesa categoria) {
+    	if (categoria == null) categoria = CategoriaDespesa.OUTROS;
+    	this.categoria = categoria;
+    }
+    
+    public void setTipoDespesa(TipoDespesa tipoDespesa) {
+    	if (tipoDespesa == null) tipoDespesa = TipoDespesa.FIXA;
+    	this.tipoDespesa = tipoDespesa;
+    }
     
 }

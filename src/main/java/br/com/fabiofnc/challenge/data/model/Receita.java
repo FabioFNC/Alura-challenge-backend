@@ -31,7 +31,7 @@ public class Receita {
     private Long id;
     private String descricao;
     private BigDecimal valor;
-    private LocalDate data = LocalDate.now();
+    private LocalDate data;
     
     public Integer getMes() {
         return this.data.getMonthValue();

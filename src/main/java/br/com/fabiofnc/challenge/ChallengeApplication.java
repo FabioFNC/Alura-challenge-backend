@@ -1,4 +1,4 @@
-package br.com.fabiofnc;
+package br.com.fabiofnc.challenge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
